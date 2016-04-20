@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DeniaRealty.Models.RealtyRentModel>
+
+@{
+    ViewBag.Title = "IndexRent";
+}
+
+<h2>IndexRent</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Area)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomsQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Square)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomsQuantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Square)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RealtyRentModelId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RealtyRentModelId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RealtyRentModelId })
+        </td>
+    </tr>
+}
+
+</table>

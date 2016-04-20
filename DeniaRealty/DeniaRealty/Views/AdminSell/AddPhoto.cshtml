@@ -1,0 +1,38 @@
+﻿@model DeniaRealty.Models.RealtySellsModel
+
+@{
+    ViewBag.Title = "Добавить фотографии объекта";
+}
+
+<h3>@Model.Type</h3>
+<h2>Выбрать файл</h2>
+@*Добавление фото в связанную с моделью таблицу, не забывам скрытое поле для передачи параметра id методу*@
+<div>
+    @using (Html.BeginForm("AddPhoto", "AdminSell", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    { <input type="hidden" value="@Model.RealtySellsModelId" name="id" />
+    <p>Изображение:</p><p><input type="file" name="image" /></p>
+    <p><input type="submit" value="Добавить" /></p>
+    }
+</div>
+
+@*Выводим список фото, связанных с моделью*@
+
+<h2>Добавленные фотографии объекта</h2>
+@if (Model.Photo != null)
+{
+    foreach (var photo in Model.Photo)
+    {
+        <div><img width="50" height="50" src="@Url.Action("GetPhoto", "AdminSell", new { id = photo.PhotoRealtySellsId })" /></div>
+
+        @*форма с кнопкой для удаления фото, не забываем про скрытое поле для передачи параметра методу*@
+        <p>
+            @using (Html.BeginForm("DeletePhoto", "AdminSell", FormMethod.Post))
+            {
+                <input type="hidden" value="@photo.PhotoRealtySellsId" name="id" />
+                <input type="submit" value="Удалить" />
+            }
+        </p>
+    }
+}
+
+@Html.ActionLink("Вернуться к базе объектов недвижимости", "IndexSell")

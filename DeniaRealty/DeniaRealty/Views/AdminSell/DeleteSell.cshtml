@@ -1,0 +1,14 @@
+﻿@model DeniaRealty.Models.RealtySellsModel
+
+@{
+    ViewBag.Title = "DeleteSell";
+}
+
+<h2>Хотите удалить?</h2>
+<h3>@Model.RealtySellsModelId</h3>
+@using (Html.BeginForm())
+{
+<div><input type="submit" value="Удалить"/></div>
+    <div>@Html.ActionLink("Вернуться на главную", "IndexSell")</div>
+}
+

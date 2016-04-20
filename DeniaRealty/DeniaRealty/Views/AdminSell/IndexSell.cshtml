@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DeniaRealty.Models.RealtySellsModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Список объектов недвижимости для продажи</h2>
+
+<p>
+    @Html.ActionLink("Добавить новый объект", "CreateSell")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Area)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomsQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Square)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomsQuantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Square)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "EditSell", new { id=item.RealtySellsModelId }) |
+            @Html.ActionLink("Детали", "Details", new { id=item.RealtySellsModelId }) |
+            @Html.ActionLink("Удалить", "DeleteSell", new { id=item.RealtySellsModelId })
+        </td>
+    </tr>
+}
+
+</table>
